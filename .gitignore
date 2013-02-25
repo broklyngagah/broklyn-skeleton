@@ -1,0 +1,6 @@
+/vendor
+/.idea
+/app/logs/development.log
+/composer.phar
+/composer.lock
+/app/config/config.yml

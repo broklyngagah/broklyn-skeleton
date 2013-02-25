@@ -1,0 +1,27 @@
+# application configuration
+application:
+    debug: true
+    site_name: ~
+
+# database configuration
+database:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_name: luvbookingdb
+    database_port: ~
+    database_user: root
+    database_password: ~
+    charset: utf8
+
+# themes configuration
+themes_name:
+    theme_admin: master
+    theme_front: ~
+
+# session configuration
+session:
+    session_name: broklyn_session
+    cookie_lifetime: 3600
+    cookie_domain: ~
+
+
