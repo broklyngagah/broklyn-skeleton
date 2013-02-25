@@ -55,7 +55,7 @@ $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
 
 // register httpCache service provider
 $app->register(new \Silex\Provider\HttpCacheServiceProvider(), array(
-    'http_cache.cache_dir' => __DIR__.'/cache',
+    'http_cache.cache_dir' => __DIR__.'/cache/',
 ));
 
 $app->register(new Silex\Provider\ServiceControllerServiceProvider()); // register ServiceControllerServiceProvider
