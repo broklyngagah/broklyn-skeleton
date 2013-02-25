@@ -3,7 +3,7 @@
 {% block title %}DBAL{% endblock %}
 {% block content %}
     {% for user in users %}
-        * id:{{ user.id }} name:{{ user.username|e }}<br />
+        id:{{ user.id }} name:{{ user.username|e }}<br />
     {% else %}
         No user have been found.<br/>
     {% endfor %}
