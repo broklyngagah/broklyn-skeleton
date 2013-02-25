@@ -22,9 +22,9 @@ class AdminCityController extends \Broklyn\Controller
 
     }
 
-    public function index()
+    public function index(Request $req)
     {
-        return new Response($this->getResponse());
+        return new Response($req);
     }
 
     public function edit($id=0)
