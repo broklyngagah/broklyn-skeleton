@@ -29,11 +29,15 @@ class AdminPostController implements ControllerProviderInterface
         return $ctr;
     }
 
+    /**
+     * @param \Silex\Application $app
+     * @return mixed
+     */
     public function post(Silex\Application $app)
     {
         $user = CityModel::getUserData($app);
 
-        return $app['twig']->render('test.html', array(
+        return $app['twig']->render('post/index.twig', array(
             'users' => CityModel::getUserData($app)
         ));
     }
