@@ -1,2 +1,5 @@
-<h1>Hello, Piter !!</h1>
-<a href="asdasdsa">test</a><br />
+{% for user in users %}
+* id:{{ user.id }} name:{{ user.username|e }}<br />
+{% else %}
+No user have been found.<br/>
+{% endfor %}

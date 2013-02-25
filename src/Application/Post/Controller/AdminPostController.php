@@ -6,6 +6,8 @@ use Silex,
     Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response;
+use Application\Post\Model\CityModel;
+
 
 class AdminPostController implements ControllerProviderInterface
 {
@@ -29,13 +31,17 @@ class AdminPostController implements ControllerProviderInterface
 
     public function post(Silex\Application $app)
     {
-        var_dump('ini admin post controller !');
-        return false;
+        $user = CityModel::getUserData($app);
+
+        return $app['twig']->render('test.html', array(
+            'users' => CityModel::getUserData($app)
+        ));
     }
 
     public function create(Silex\Application $app, Request $req)
     {
-        var_dump('POST' === $req->getMethod());
+
+        var_dump($req->getMethod());
         return false;
     }
 

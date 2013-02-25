@@ -58,9 +58,11 @@ $app->register(new \Silex\Provider\HttpCacheServiceProvider(), array(
     'http_cache.cache_dir' => __DIR__.'/cache/',
 ));
 
-$app->register(new Silex\Provider\ServiceControllerServiceProvider()); // register ServiceControllerServiceProvider
-$app->register(new Silex\Provider\SwiftmailerServiceProvider()); // register swift mailer service provider
+$app->register(new \Silex\Provider\ServiceControllerServiceProvider()); // register ServiceControllerServiceProvider
+$app->register(new \Silex\Provider\SwiftmailerServiceProvider()); // register swift mailer service provider
 $app->register(new \Silex\Provider\UrlGeneratorServiceProvider()); // register urlGeneratorService
+$app->register(new \Silex\Provider\FormServiceProvider());
+
 
 $app->get('/dbal/select', function() use ($app){
     $sql = 'select * from user';
