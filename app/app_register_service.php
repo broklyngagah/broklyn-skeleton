@@ -11,13 +11,14 @@ $app->register(new \Silex\Provider\SessionServiceProvider(), array(
 
 // register twig service provider
 $app->register(new \Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => BRO_PROJECT_ROOT_DIR.'/themes/master',
     'twig.option' => array(
         'debug' => true,
         'cache' => BRO_PROJECT_ROOT_DIR.'/apps/cache/twig/',
         'strict_variables' => true,
         'autoescape' => true,
     ),
+    'twig.form.templates' => array('form_div_layout.html.twig', 'common/form_div_layout.html.twig'),
+    'twig.path' => BRO_PROJECT_ROOT_DIR.'/themes/master',
 ));
 
 // register monolog service provider

@@ -4,6 +4,7 @@ require_once __DIR__ . '/app_register_service.php';
 require_once __DIR__ . '/app_register_controller.php';
 
 //managing errors
+/*
 $app->error(function (\Exception $e, $code) use ($app) {
     $app['monolog']->addInfo($e->getMessage());
     $app['monolog']->addInfo($e->getTraceAsString());
@@ -19,3 +20,4 @@ $app->error(function (\Exception $e, $code) use ($app) {
     }
     return $app->json(array("statusCode"=>$code, "message" => $message));
 });
+*/
