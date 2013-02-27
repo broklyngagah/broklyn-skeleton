@@ -11,7 +11,7 @@ class AdminAirlinesController extends \Broklyn\Controller
 
     public function initialize()
     {
-        $this->app->get($this->adminUrl, array($this, 'index'))
+        $this->app->get($this->urlResolver."/", array($this, 'index'))
             ->method('GET')
             ->bind('admin_airlines_index');
     }

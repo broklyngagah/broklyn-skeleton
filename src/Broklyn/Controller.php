@@ -10,12 +10,12 @@ abstract class Controller
 {
     protected $app;
     protected $bundle;
-    protected $adminUrl;
+    protected $urlResolver;
 
     public function __construct(BroklynApp $app, $adminUrl='')
     {
         $this->app = $app;
-        $this->adminUrl =  '' === $adminUrl ? "/".$this->bundle ."/" : "/".$adminUrl."/".$this->bundle."/";
+        $this->urlResolver =  '' === $adminUrl ? "/".$this->bundle : "/".$adminUrl."/".$this->bundle;
 
         $this->initialize();
     }

@@ -16,9 +16,14 @@ foreach ($routes as $file){
             if (pathinfo($c, PATHINFO_EXTENSION) === "php"){
                 $exploded = explode(".", $c);
                 $class = "\\Application\\$file\\Controller\\$exploded[0]";
-                //var_dump($class);
 
-                new $class($app, $adminUrl);
+                $admin = $exploded[0];
+
+                if(preg_match('/Admin/', $admin)) {
+                    new $class($app, $adminUrl);
+                } else {
+                    new $class($app, "");
+                }
             }
         }
     }

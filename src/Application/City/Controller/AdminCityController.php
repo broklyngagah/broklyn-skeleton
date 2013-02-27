@@ -11,11 +11,11 @@ class AdminCityController extends \Broklyn\Controller
 
     public function initialize()
     {
-        $this->app->match($this->adminUrl, array($this, 'index'))
+        $this->app->match($this->urlResolver."/", array($this, 'index'))
             ->method('GET')
             ->bind('admin_city_index');
 
-        $this->app->match($this->adminUrl . "/edit/{id}", array($this, 'edit'))
+        $this->app->match($this->urlResolver."/edit/{id}/", array($this, 'edit'))
             ->assert('id', '\d*')
             ->method('GET|POST')
             ->bind('admin_city_edit');
