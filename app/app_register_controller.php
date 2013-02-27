@@ -2,7 +2,17 @@
 
 $adminUrl = $config['general']['application']['admin_url'];
 
-// get from admin post controller
-$app->mount($adminUrl . '/post', new \Application\Post\Controller\AdminPostController()); // post admin controller
+$routesDir  = BRO_SRC_DIR."/Application";
+$routes = scandir($routesDir);
+foreach ($routes as $file){
+    if ($file === '.' or $file === '..') continue;
+    $ctl = scandir($routesDir . '/' . $file . '/Controller');
 
-new \Application\City\Controller\AdminCityController($app, $adminUrl);
+    foreach($ctl as $c) {
+        if (pathinfo($c, PATHINFO_EXTENSION) === "php"){
+            $exploded = explode(".", $c);
+            $class = "\\Application\\$file\\Controller\\$exploded[0]";
+            new $class($app, $adminUrl);
+        }
+    }
+}

@@ -19,7 +19,6 @@ class AdminCityController extends \Broklyn\Controller
             ->assert('id', '\d*')
             ->method('GET|POST')
             ->bind('admin_city_edit');
-
     }
 
     public function index(Request $req)
@@ -29,6 +28,7 @@ class AdminCityController extends \Broklyn\Controller
 
     public function edit($id=0)
     {
+        var_dump($this->app['request']->getBaseUrl());
         return new Response('ini method edit di city admin controller');
     }
 
