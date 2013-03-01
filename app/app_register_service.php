@@ -13,18 +13,29 @@ $app->register(new \Silex\Provider\SessionServiceProvider(), array(
 $app->register(new \Silex\Provider\TwigServiceProvider(), array(
     'twig.option' => array(
         'debug' => true,
-        'cache' => BRO_PROJECT_ROOT_DIR.'/apps/cache/twig/',
-        'strict_variables' => true,
+        'cache' => BRO_PROJECT_ROOT_DIR.'/app/cache/twig',
+        'strict_variables' => false,
         'autoescape' => true,
     ),
+    'twig.class_path' => BRO_PROJECT_ROOT_DIR.'/vendor/twig/lib',
     'twig.form.templates' => array('form_div_layout.html.twig', 'common/form_div_layout.html.twig'),
-    'twig.path' => BRO_PROJECT_ROOT_DIR.'/themes/master',
+    'twig.path' => BRO_PROJECT_ROOT_DIR.'/web/themes/master',
 ));
+// Add the Bolt Twig functions, filters and tags.
+$app['twig']->addExtension(new \Broklyn\TwigExtension($app));
+$app['twig']->addTokenParser(new \Broklyn\SetcontentTokenParser());
+
+// Add the string loader..x
+$loader = new Twig_Loader_String();
+$app['twig.loader']->addLoader($loader);
+
+
 
 // register monolog service provider
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => __DIR__.'/logs/development.log',
 ));
+
 
 // register doctrine service provider
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(

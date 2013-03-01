@@ -21,6 +21,18 @@ abstract class Controller
     }
 
     /**
+     * twig rendering template
+     *
+     * @param string $file
+     * @param array $data
+     * @return mixed
+     */
+    protected function render($file='', array $data=array())
+    {
+        return $this->app['twig']->render($file, $data);
+    }
+
+    /**
      * Initialize class router like constructor
      *
      * @return mixed

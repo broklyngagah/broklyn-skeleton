@@ -1,7 +1,4 @@
 <?php
-
-
-
 // defined path
 if(!defined('BRO_PROJECT_ROOT_DIR')) {
     define('BRO_PROJECT_ROOT_DIR', dirname(__DIR__));
@@ -12,9 +9,12 @@ if(!defined('BRO_PROJECT_ROOT_DIR')) {
 }
 
 require_once BRO_PROJECT_ROOT_DIR . '/vendor/autoload.php';
-require_once BRO_SRC_BROKLYN_DIR . '/Library/Helper.php';
+require_once BRO_SRC_BROKLYN_DIR . '/Library/util.php';
+require_once BRO_SRC_BROKLYN_DIR . '/Helper/helper.php';
 
 $config = getConfig();
+
+define('ADMIN_THEMES', BRO_WEB_DIR . '/themes/' . $config['general']['themes_name']['theme_admin']);
 
 // instant the application
 $app = new Broklyn\Application();
