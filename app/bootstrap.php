@@ -26,8 +26,6 @@ $config = getConfig();
 
 require_once __DIR__ . '/app.php';
 
-//echo '<pre>', var_dump($app['controllers']), '<pre>'; die;
-
 return $app;
 
 

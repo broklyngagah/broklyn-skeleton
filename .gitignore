@@ -3,3 +3,4 @@
 /app/logs/development.log
 /composer.phar
 /app/config/config.yml
+/app/cache/profiler

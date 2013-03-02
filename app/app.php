@@ -4,6 +4,8 @@
 $app = new Broklyn\Application();
 $app['debug'] = (bool)$config['general']['application']['debug'];
 
+
+
 // register session service provider
 $app->register(new \Silex\Provider\SessionServiceProvider(), array(
     'session.storage.options' => array(
@@ -17,29 +19,27 @@ $app->register(new \Silex\Provider\SessionServiceProvider(), array(
 $cfg[] = BRO_WEB_DIR.'/themes/'.$config['general']['themes_name']['theme_admin'];
 $cfg[] = BRO_WEB_DIR.'/themes/'.$config['general']['themes_name']['theme_front'];
 $app->register(new \Silex\Provider\TwigServiceProvider(), array(
-    'twig.class_path' => BRO_PROJECT_ROOT_DIR.'/vendor/twig/lib',
     'twig.path' => $cfg,
     'twig.option' => array(
         'debug' => true,
-        'charset' => 'utf-8',
-        'cache' => dirname(__DIR__) . 'cache',
+        'charset' => 'utf8',
+        'cache' => dirname(__DIR__) . '/cache/twig/',
         'strict_variables' => false,
         'autoescape' => true,
     ),
 ));
-// Add the Broklyn Twig functions, filters and tags.
-$app['twig']->addExtension(new \Broklyn\Twig\TwigExtension($app));
-$app['twig']->addTokenParser(new \Broklyn\Twig\SetContentTokenParser());
-$loader = new Twig_Loader_String();
-$app['twig.loader']->addLoader($loader);
 
-//echo '<pre>', var_dump(dirname(__DIR__) . '/cache/'), '<pre>'; die;
+
+
+$app->register(new \Silex\Provider\ServiceControllerServiceProvider()); // register ServiceControllerServiceProvider
+$app->register(new \Silex\Provider\SwiftmailerServiceProvider()); // register swift mailer service provider
+$app->register(new \Silex\Provider\UrlGeneratorServiceProvider()); // register urlGeneratorService
+$app->register(new \Silex\Provider\FormServiceProvider());
 
 // register monolog service provider
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => __DIR__.'/logs/development.log',
 ));
-
 
 // register doctrine service provider
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
@@ -57,15 +57,23 @@ $app->register(new \Silex\Provider\HttpCacheServiceProvider(), array(
     'http_cache.cache_dir' => __DIR__.'/cache',
 ));
 
-$app->register(new \Silex\Provider\ServiceControllerServiceProvider()); // register ServiceControllerServiceProvider
-$app->register(new \Silex\Provider\SwiftmailerServiceProvider()); // register swift mailer service provider
-$app->register(new \Silex\Provider\UrlGeneratorServiceProvider()); // register urlGeneratorService
-$app->register(new \Silex\Provider\FormServiceProvider());
+// web profile
+$app->register($profiler = new \Broklyn\Provider\WebProfilerServiceProvider(), array(
+    'profiler.cache_dir' => __DIR__.'/cache/profiler/',
+));
+$app->mount('/_profiler', $profiler);
+
+
+$app['twig']->addExtension(new \Broklyn\Twig\TwigExtension($app));
+//$app['twig']->addTokenParser(new \Broklyn\Twig\SetContentTokenParser());
+//$loader = new Twig_Loader_String();
+//$app['twig.loader']->addLoader($loader);
+
+
 
 require_once __DIR__ . '/app_register_controller.php';
-
-//managing errors
 /*
+//managing errors
 $app->error(function (\Exception $e, $code) use ($app) {
     $app['monolog']->addInfo($e->getMessage());
     $app['monolog']->addInfo($e->getTraceAsString());

@@ -2,7 +2,7 @@
 
 namespace Application\Flight\Controller;
 
-use Application\Post\Model\CityModel;
+use Application\Flight\Model\AirlinesModel;
 
 
 class AdminAirlinesController extends \Broklyn\Controller
@@ -20,11 +20,8 @@ class AdminAirlinesController extends \Broklyn\Controller
     public function index()
     {
 
-        $user = CityModel::getUserData($this->app);
-
-
-
-        return self::render('post/index.twig', array(
+        $user = AirlinesModel::getAirlines($this->app);
+        return self::render('flight/airlines.index.twig', array(
             'users' => $user,
         ));
     }
