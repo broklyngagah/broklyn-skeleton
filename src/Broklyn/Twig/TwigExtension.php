@@ -1,6 +1,6 @@
 <?php
 
-namespace Broklyn;
+namespace Broklyn\Twig;
 
 use Broklyn\Library\Util;
 use Broklyn;

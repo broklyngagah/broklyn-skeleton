@@ -1,6 +1,6 @@
 <?php
 
-namespace Broklyn;
+namespace Broklyn\Twig;
 
 class SetcontentNode extends \Twig_Node
 {

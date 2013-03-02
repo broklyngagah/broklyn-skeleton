@@ -1,6 +1,6 @@
 <?php
 
-namespace Broklyn;
+namespace Broklyn\Twig;
 
 class SetContentTokenParser extends \Twig_TokenParser
 {

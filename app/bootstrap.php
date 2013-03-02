@@ -1,4 +1,14 @@
 <?php
+
+$_SERVER['SCRIPT_NAME'] = str_replace(
+    '/web/' . basename(__FILE__),
+    '/' . basename(__FILE__),
+    $_SERVER['SCRIPT_NAME']
+);
+
+umask(0000);
+
+
 // defined path
 if(!defined('BRO_PROJECT_ROOT_DIR')) {
     define('BRO_PROJECT_ROOT_DIR', dirname(__DIR__));
@@ -14,13 +24,9 @@ require_once BRO_SRC_BROKLYN_DIR . '/Helper/helper.php';
 
 $config = getConfig();
 
-define('ADMIN_THEMES', BRO_WEB_DIR . '/themes/' . $config['general']['themes_name']['theme_admin']);
-
-// instant the application
-$app = new Broklyn\Application();
-$app['debug'] = $config['general']['application']['debug'];
-
 require_once __DIR__ . '/app.php';
+
+//echo '<pre>', var_dump($app['controllers']), '<pre>'; die;
 
 return $app;
 
