@@ -2,6 +2,11 @@
 
 namespace Application\Post\Controller;
 
+use Symfony\Component\HttpFoundation\Request,
+    Symfony\Component\HttpFoundation\Response;
+
+use Broklyn\Library\Util;
+
 class PostController extends \Broklyn\Controller
 {
 
@@ -10,12 +15,13 @@ class PostController extends \Broklyn\Controller
     public function initialize()
     {
         $this->app->match($this->urlResolver . '/', array($this, 'index'))
-            ->bind('post_index');
+            ->bind('post_index')
+        ;
     }
 
-    public function index()
+    public function index(Request $req)
     {
-        echo '<pre>', var_dump('ini post index (front)'), '<pre>'; die;
+        return $this->render('post/view.twig');
     }
 
 }
