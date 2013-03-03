@@ -1,5 +1,5 @@
 {
-    "hash": "5bb164c089f06978ef2eeac79047090d",
+    "hash": "a99ea68a15050b649ad061972a84b40a",
     "packages": [
         {
             "name": "doctrine/common",
@@ -442,6 +442,53 @@
                 "mailer"
             ],
             "time": "2012-06-17 13:55:34"
+        },
+        {
+            "name": "symfony/config",
+            "version": "2.2.x-dev",
+            "target-dir": "Symfony/Component/Config",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Config.git",
+                "reference": "3af40615f2d486847d3a9f939612f8e8d08653f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/3af40615f2d486847d3a9f939612f8e8d08653f0",
+                "reference": "3af40615f2d486847d3a9f939612f8e8d08653f0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Config\\": ""
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Config Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-03-01 10:42:10"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1168,6 +1215,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "silex/silex": 20,
-        "silex/web-profiler": 20
+        "silex/web-profiler": 20,
+        "symfony/config": 20
     }
 }

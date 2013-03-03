@@ -1,0 +1,4 @@
+homepage:
+    path: /
+    defaults: { _controller: Acme\PostBundle\Controller\DefaultController::indexAction }
+    methods: [GET]
